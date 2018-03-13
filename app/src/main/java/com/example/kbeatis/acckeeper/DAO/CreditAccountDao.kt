@@ -1,5 +1,6 @@
 package com.example.kbeatis.acckeeper.DAO
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import com.example.kbeatis.acckeeper.Entity.CreditAccount
 
@@ -7,9 +8,9 @@ import com.example.kbeatis.acckeeper.Entity.CreditAccount
  * Created by kbeatis on 10.03.18.
  */
 @Dao
-interface CreaditAccountDao {
+interface CreditAccountDao {
     @Query("SELECT * FROM credit_account_table")
-    fun getAll() : List<CreditAccount>
+    fun getAll() : LiveData<List<CreditAccount>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(creditAccount: CreditAccount)

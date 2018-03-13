@@ -1,5 +1,6 @@
 package com.example.kbeatis.acckeeper.DAO
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import com.example.kbeatis.acckeeper.Entity.User
 
@@ -9,7 +10,7 @@ import com.example.kbeatis.acckeeper.Entity.User
 @Dao
 interface UserDao {
     @Query("SELECT * FROM user_table")
-    fun getAll(): List<User>
+    fun getAll(): LiveData<List<User>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)

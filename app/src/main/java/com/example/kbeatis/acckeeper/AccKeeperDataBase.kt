@@ -4,7 +4,7 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
-import com.example.kbeatis.acckeeper.DAO.CreaditAccountDao
+import com.example.kbeatis.acckeeper.DAO.CreditAccountDao
 import com.example.kbeatis.acckeeper.DAO.NoteDao
 import com.example.kbeatis.acckeeper.DAO.SiteAccountDao
 import com.example.kbeatis.acckeeper.DAO.UserDao
@@ -19,7 +19,7 @@ import com.example.kbeatis.acckeeper.Entity.User
 @Database(entities = arrayOf(User::class, SiteAccount::class, CreditAccount::class, Note::class), version = 1)
 abstract class AccKeeperDataBase : RoomDatabase() {
     abstract fun userDao(): UserDao
-    abstract fun creditAccountDao() : CreaditAccountDao
+    abstract fun creditAccountDao() : CreditAccountDao
     abstract fun siteAccountDao() : SiteAccountDao
     abstract fun noteDao() : NoteDao
 
@@ -30,6 +30,7 @@ abstract class AccKeeperDataBase : RoomDatabase() {
             if (INSTANCE == null) {
                 synchronized(AccKeeperDataBase::class) {
                     //Не шути с allowMainThreadQueries Вася, надо будет переделать под другой поток
+                    //через AsyncTask, RxJava или LiveData
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             AccKeeperDataBase::class.java, "acc_keeper.db")
                             .allowMainThreadQueries()

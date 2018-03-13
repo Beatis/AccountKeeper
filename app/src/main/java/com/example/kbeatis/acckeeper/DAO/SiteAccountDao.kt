@@ -1,5 +1,6 @@
 package com.example.kbeatis.acckeeper.DAO
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import com.example.kbeatis.acckeeper.Entity.SiteAccount
 
@@ -9,7 +10,7 @@ import com.example.kbeatis.acckeeper.Entity.SiteAccount
 @Dao
 interface SiteAccountDao {
     @Query("SELECT * FROM site_account_table")
-    fun getAll(): List<SiteAccount>
+    fun getAll(): LiveData<List<SiteAccount>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(siteAccount: SiteAccount)
