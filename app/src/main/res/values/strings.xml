@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AccKeeper</string>
+    <string name="auth_welcome_reference">Looks like you are new here. Let\'s create a new account for you!</string>
+    <string name="login_hint">Login</string>
+    <string name="password_hint">Password</string>
+    <string name="question_hint">Create question to restore your account</string>
+    <string name="answer_hint">Create answer for secret your question</string>
+    <string name="create_account_button_title">Create Account</string>
 </resources>
