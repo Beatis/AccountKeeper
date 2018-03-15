@@ -36,15 +36,15 @@ class AuthFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_auth, container, false)
         mBinding.root.create_account_button.setOnClickListener {
-            if (!mBinding.root.login_edit_text.text.isEmpty() &&
-                    !mBinding.root.password_edit_text.text.isEmpty() &&
-                    !mBinding.root.secret_question_edit_text.text.isEmpty() &&
-                    !mBinding.root.secret_answer_edit_text.text.isEmpty()) {
+            if (!mBinding.loginEditText.text.isEmpty() &&
+                    !mBinding.passwordEditText.text.isEmpty() &&
+                    !mBinding.secretQuestionEditText.text.isEmpty() &&
+                    !mBinding.secretAnswerEditText.text.isEmpty()) {
                 val user = User()
-                user.userLogin = mBinding.root.login_edit_text.text.toString()
-                user.userPassword = mBinding.root.password_edit_text.text.toString()
-                user.secretQuestion = mBinding.root.secret_question_edit_text.text.toString()
-                user.secretAnswer = mBinding.root.secret_answer_edit_text.text.toString()
+                user.userLogin = mBinding.loginEditText.text.toString()
+                user.userPassword = mBinding.passwordEditText.text.toString()
+                user.secretQuestion = mBinding.secretQuestionEditText.secret_question_edit_text.text.toString()
+                user.secretAnswer = mBinding.secretAnswerEditText.text.toString()
                 onCreateAccountClickListener.onCreateAccountClick(user)
             } else {
                 Toast.makeText(activity, "Check that all fields are filled", Toast.LENGTH_LONG).show()

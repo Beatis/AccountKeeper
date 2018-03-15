@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/site_page" android:title="@string/site_page_title" android:icon="@android:drawable/ic_media_play"/>
+    <item android:id="@+id/credit_page" android:title="@string/credits_page_title" android:icon="@android:drawable/ic_menu_camera"/>
+    <item android:id="@+id/note_page" android:title="@string/notes_page_title" android:icon="@android:drawable/ic_menu_gallery"/>
+</menu>
