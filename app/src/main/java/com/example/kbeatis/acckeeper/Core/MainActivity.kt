@@ -1,17 +1,17 @@
 package com.example.kbeatis.acckeeper.Core
 
-import android.app.Fragment
+
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import com.example.kbeatis.acckeeper.BaseUtil.BaseActivity
 import com.example.kbeatis.acckeeper.Create.CreateAccountFragment
 import com.example.kbeatis.acckeeper.R
 import com.example.kbeatis.acckeeper.databinding.ActivityMainBinding
-import com.example.kbeatis.acckeeper.inTransaction
+import com.example.kbeatis.acckeeper.inTransactionSupport
 
 class MainActivity : BaseActivity(), MainContainerFragment.OnFabClickListener {
     override fun onFabClick() {
-        fragmentManager.inTransaction {
+        supportFragmentManager.inTransactionSupport {
             replace(mBinding.mainContainer.id, CreateAccountFragment())
             addToBackStack("CreateAccount")
         }
@@ -26,7 +26,7 @@ class MainActivity : BaseActivity(), MainContainerFragment.OnFabClickListener {
     }
 
     fun replaceTransaction () {
-        fragmentManager.inTransaction{
+        supportFragmentManager.inTransactionSupport {
             replace(mBinding.mainContainer.id, MainContainerFragment())
         }
     }

@@ -11,3 +11,10 @@ inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
     fragmentTransaction.func()
     fragmentTransaction.commit()
 }
+
+inline fun android.support.v4.app.FragmentManager
+        .inTransactionSupport(func: android.support.v4.app.FragmentTransaction.() -> Unit) {
+    val fragmentTransaction = beginTransaction()
+    fragmentTransaction.func()
+    fragmentTransaction.commit()
+}

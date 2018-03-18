@@ -14,6 +14,7 @@ import com.example.kbeatis.acckeeper.R
 import com.example.kbeatis.acckeeper.databinding.ActivityAuthBinding
 import com.example.kbeatis.acckeeper.databinding.ActivityMainBinding
 import com.example.kbeatis.acckeeper.inTransaction
+import com.example.kbeatis.acckeeper.inTransactionSupport
 
 /**
  * Created by kbeatis on 10.03.18.
@@ -35,7 +36,7 @@ class AuthActivity : BaseActivity(), AuthFragment.OnCreateAccountClickListener {
     }
 
     private fun startTransaction() {
-        fragmentManager.inTransaction {
+        supportFragmentManager.inTransactionSupport {
             replace(mBinding.authContainer.id, AuthFragment())
         }
     }

@@ -47,7 +47,7 @@ class AuthFragment : BaseFragment() {
                 user.secretAnswer = mBinding.secretAnswerEditText.text.toString()
                 onCreateAccountClickListener.onCreateAccountClick(user)
             } else {
-                Toast.makeText(activity, "Check that all fields are filled", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, getString(R.string.empty_warning), Toast.LENGTH_LONG).show()
             }
         }
         return mBinding.root

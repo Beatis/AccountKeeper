@@ -5,24 +5,51 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlHighlight">@android:color/white</item>
-        <item name="colorControlActivated">@color/colorAccent</item>
-        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/input_color</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/input_color</item>
+    </style>
+
+    <style name="TextNormalSize">
+        <item name="android:layout_marginTop">@dimen/default_small_padding</item>
+        <item name="android:layout_marginBottom">@dimen/default_small_padding</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="BackgroundStyle">
+        <item name="android:background">@color/background_white</item>
+    </style>
+
+    <style name="CardViewStyle">
+        <item name="android:layout_margin">@dimen/default_normal_padding</item>
+        <item name="cardBackgroundColor">@color/real_white</item>
+        <item name="cardCornerRadius">6dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="AuthEditTextFields">
         <item name="android:singleLine">true</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@color/colorPrimaryLight</item>
         <item name="android:textColorHint">@android:color/white</item>
     </style>
 
     <style name="TextInputLayoutAuthStyle">
-        <item name="android:textColorHint">@android:color/white</item>
+        <item name="android:textColorHint">@color/colorPrimaryLight</item>
     </style>
 
     <style name="SplashTime" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <style name="FABStyle">
+        <item name="fabSize">normal</item>
+        <item name="android:layout_margin">@dimen/default_normal_padding</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
     </style>
     
 </resources>
