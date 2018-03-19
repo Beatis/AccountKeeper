@@ -12,7 +12,8 @@ data class User(@PrimaryKey(autoGenerate = true) var id: Long?,
                 @ColumnInfo(name = "login") var userLogin: String,
                 @ColumnInfo(name = "password") var userPassword: String,
                 @ColumnInfo(name = "secret_question") var secretQuestion: String,
-                @ColumnInfo(name = "secret_answer") var secretAnswer: String) {
+                @ColumnInfo(name = "secret_answer") var secretAnswer: String,
+                @ColumnInfo(name = "isAuthorized") var isAuthorized: Boolean) {
 
-    constructor():this(null, "", "", "", "")
+    constructor():this(null, "", "", "", "", true)
 }

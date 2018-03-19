@@ -30,7 +30,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_login"
-            style="@style/TextInputLayoutAuthStyle"
+            style="@style/TextInputLayoutAuthStyleWhite"
             android:layout_below="@+id/title_auth_reference"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -38,7 +38,7 @@
             <EditText
                 android:hint="@string/login_hint"
                 android:maxEms="20"
-                style="@style/AuthEditTextFields"
+                style="@style/AuthEditTextFieldsWhite"
                 android:id="@+id/login_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -47,14 +47,14 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_password"
-            style="@style/TextInputLayoutAuthStyle"
+            style="@style/TextInputLayoutAuthStyleWhite"
             android:layout_below="@+id/input_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
                 android:hint="@string/password_hint"
-                style="@style/AuthEditTextFields"
+                style="@style/AuthEditTextFieldsWhite"
                 android:maxEms="8"
                 android:id="@+id/password_edit_text"
                 android:inputType="numberPassword"
@@ -65,14 +65,14 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_question"
-            style="@style/TextInputLayoutAuthStyle"
+            style="@style/TextInputLayoutAuthStyleWhite"
             android:layout_below="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
                 android:hint="@string/question_hint"
-                style="@style/AuthEditTextFields"
+                style="@style/AuthEditTextFieldsWhite"
                 android:id="@+id/secret_question_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -81,14 +81,14 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_answer"
-            style="@style/TextInputLayoutAuthStyle"
+            style="@style/TextInputLayoutAuthStyleWhite"
             android:layout_below="@+id/input_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
                 android:hint="@string/answer_hint"
-                style="@style/AuthEditTextFields"
+                style="@style/AuthEditTextFieldsWhite"
                 android:id="@+id/secret_answer_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

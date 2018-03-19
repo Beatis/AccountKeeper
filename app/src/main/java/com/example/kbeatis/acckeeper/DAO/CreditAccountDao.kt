@@ -12,6 +12,9 @@ interface CreditAccountDao {
     @Query("SELECT * FROM credit_account_table")
     fun getAll() : LiveData<List<CreditAccount>>
 
+    @Query("SELECT * FROM credit_account_table where id = :searchId")
+    fun getCreditAccountById(searchId: Long): CreditAccount
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(creditAccount: CreditAccount)
 

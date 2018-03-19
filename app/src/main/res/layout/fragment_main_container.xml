@@ -6,12 +6,31 @@
         android:layout_height="match_parent">
 
         <FrameLayout
-            android:background="@color/colorPrimaryLight"
+            style="@style/BackgroundStyle"
             android:id="@+id/fragment_main_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/bottom_navigation_view"
             android:layout_alignParentStart="true">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/acckeeper_logo"
+                app:fabSize="normal"
+                app:srcCompat="@android:drawable/ic_lock_lock" />
         </FrameLayout>
 
         <android.support.design.widget.BottomNavigationView

@@ -10,7 +10,13 @@ import com.example.kbeatis.acckeeper.Entity.User
 @Dao
 interface UserDao {
     @Query("SELECT * FROM user_table")
-    fun getAll(): LiveData<List<User>>
+    fun getAllLivedata(): LiveData<List<User>>
+
+    @Query("SELECT * FROM user_table")
+    fun getAll(): List<User>
+
+    @Query("SELECT * FROM user_table where id = :searchId")
+    fun getUserById(searchId: Long): User
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)

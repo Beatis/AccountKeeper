@@ -12,6 +12,9 @@ interface SiteAccountDao {
     @Query("SELECT * FROM site_account_table")
     fun getAll(): LiveData<List<SiteAccount>>
 
+    @Query("SELECT * FROM site_account_table where id = :searchId")
+    fun getSiteAccountById(searchId: Long): SiteAccount
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(siteAccount: SiteAccount)
 

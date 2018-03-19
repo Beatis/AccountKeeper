@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Auth.AuthActivity" />
+        <activity android:name=".Auth.AuthActivity" android:theme="@style/AppThemeWhite"/>
     </application>
 
 </manifest>

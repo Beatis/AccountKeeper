@@ -16,7 +16,7 @@ import com.example.kbeatis.acckeeper.Entity.User
 /**
  * Created by kbeatis on 07.03.18.
  */
-@Database(entities = arrayOf(User::class, SiteAccount::class, CreditAccount::class, Note::class), version = 1)
+@Database(entities = arrayOf(User::class, SiteAccount::class, CreditAccount::class, Note::class), version = 2)
 abstract class AccKeeperDataBase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun creditAccountDao() : CreditAccountDao
@@ -33,6 +33,7 @@ abstract class AccKeeperDataBase : RoomDatabase() {
                     //через AsyncTask, RxJava или LiveData
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             AccKeeperDataBase::class.java, "acc_keeper.db")
+                            .fallbackToDestructiveMigration()
                             .allowMainThreadQueries()
                             .build()
                 }

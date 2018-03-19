@@ -4,23 +4,30 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import android.content.Context
 import com.example.kbeatis.acckeeper.AccKeeperDataBase
 import com.example.kbeatis.acckeeper.Entity.User
 
 /**
  * Created by kbeatis on 12.03.18.
  */
-class IntroActivityViewModel(application: Application) : AndroidViewModel(application) {
+class IntroViewModel(application: Application) : AndroidViewModel(application) {
     private var mDatabase: AccKeeperDataBase? = null
-    private var livedataUsers: LiveData<List<User>>? = null
+    private var userList: List<User>? = null
 
-    fun getUsers() : LiveData<List<User>>? {
-        if (livedataUsers == null) {
-            livedataUsers = mDatabase?.userDao()?.getAll()
+    fun getUsers() : List<User>? = when (userList) {
+        null -> {
+            userList = mDatabase?.userDao()?.getAll()
+            userList
         }
-        return livedataUsers
+        else -> userList
+    }
+
+    fun updateUser(user: User) {
+        mDatabase?.userDao()?.update(user)
+    }
+
+    fun insertUser(user: User) {
+        mDatabase?.userDao()?.insert(user)
     }
 
     init {

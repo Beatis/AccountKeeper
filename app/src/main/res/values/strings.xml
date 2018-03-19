@@ -9,4 +9,28 @@
     <string name="site_page_title">Sites</string>
     <string name="credits_page_title">Credits</string>
     <string name="notes_page_title">Notes</string>
+    <string name="site_account_name">Site name</string>
+    <string name="site_account_login">Site Login</string>
+    <string name="site_account_password">Site Password</string>
+    <string name="credit_account_name">Bank name</string>
+    <string name="credit_account_number">Credit card number</string>
+    <string name="expired_date">Expired date</string>
+    <string name="credit_account_month">Month</string>
+    <string name="credit_account_year">Year</string>
+    <string name="credit_account_cww">CWW</string>
+    <string name="note_description">Description</string>
+    <string name="note_title">Title</string>
+    <string name="empty_warning">Check that all fields are filled</string>
+    <string name="choose_action_title">Choose action</string>
+    <string name="logout_title">Logout</string>
+    <string name="exit_title">Exit</string>
+    <string name="enter_password_title">Enter the password for account: </string>
+    <string name="login_title">Login</string>
+    <string name="site_account_description">Description</string>
+
+    <string-array name="actions">
+        <item>Edit</item>
+        <item>Delete</item>
+    </string-array>
+
 </resources>
