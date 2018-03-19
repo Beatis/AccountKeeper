@@ -1,9 +1,11 @@
 package com.example.kbeatis.acckeeper.Core
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Fragment
 import android.arch.lifecycle.*
 import android.content.Context
+import android.content.DialogInterface
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
@@ -13,6 +15,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.kbeatis.acckeeper.BaseUtil.BaseFragment
 import com.example.kbeatis.acckeeper.Entity.CreditAccount
 import com.example.kbeatis.acckeeper.Entity.Note
@@ -42,7 +45,13 @@ class MainContainerFragment : BaseFragment() {
         fun onFabClick()
     }
 
-    private lateinit var onFabClickListener: OnFabClickListener
+    interface OnActionClickListener {
+        fun onEditClick()
+        fun onDeleteClick()
+    }
+
+    private var onFabClickListener: OnFabClickListener? = null
+    private var onActionClickListener: OnActionClickListener? = null
     private lateinit var mBinding: FragmentMainContainerBinding
     private lateinit var viewModel: MainViewModel
     private var mAdapter: AccountAdapter? = null
@@ -52,7 +61,13 @@ class MainContainerFragment : BaseFragment() {
         if (context !is OnFabClickListener) {
             throw RuntimeException("You must implement OnFabClickListener")
         }
+
+        if (context !is OnActionClickListener) {
+            throw RuntimeException("You must implement OnActionClickListener")
+        }
+
         onFabClickListener = context
+        onActionClickListener = context
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +79,7 @@ class MainContainerFragment : BaseFragment() {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_main_container, container, false)
         invalidateBottomNavigation()
         invalidateFab()
+        //TODO спорный observer
         viewModel.getSelectedAccount()?.observe(this, Observer {
             if (it == null) {
                 setFragment(SITE_ACCOUNT_PAGE)
@@ -85,7 +101,7 @@ class MainContainerFragment : BaseFragment() {
     fun invalidateFab() {
         mBinding.floatingActionButton.setOnClickListener {
             viewModel.getSelectedAccount()?.value = mBinding.bottomNavigationView.selectedItemId
-            onFabClickListener.onFabClick()
+            onFabClickListener?.onFabClick()
         }
     }
 
@@ -124,7 +140,7 @@ class MainContainerFragment : BaseFragment() {
         invalidateRecycler(menuPage)
     }
 
-    class AccountAdapter(context: Context?, listType: Int) : RecyclerView.Adapter<AccountAdapter.ViewHolder>() {
+    internal inner class AccountAdapter(context: Context?, listType: Int) : RecyclerView.Adapter<AccountAdapter.ViewHolder>() {
 
         private var mListType: Int = 0
         private var mContext: Context?
@@ -157,7 +173,13 @@ class MainContainerFragment : BaseFragment() {
                 MainContainerFragment.SITE_ACCOUNT_PAGE -> {
                     val mSiteAccountBinding: ItemSiteAccountBinding
                             = DataBindingUtil.inflate(layoutInflater, R.layout.item_site_account, parent, false)
-                    ViewHolder(mSiteAccountBinding)
+                    val viewHolder = ViewHolder(mSiteAccountBinding)
+                    mSiteAccountBinding.root.setOnLongClickListener {
+                        createDialog(viewHolder.adapterPosition)
+                        true
+                    }
+
+                    viewHolder
                 }
                 MainContainerFragment.CREDIT_ACCOUNT_PAGE -> {
                     val mSiteAccountBinding: ItemCreditAccountBinding
@@ -175,6 +197,34 @@ class MainContainerFragment : BaseFragment() {
                     ViewHolder(mSiteAccountBinding)
                 }
             }
+
+        fun createDialog(position: Int) {
+            val builder: AlertDialog.Builder = AlertDialog.Builder(mContext)
+            builder.setTitle(R.string.choose_action_title)
+                .setItems(R.array.actions, DialogInterface.OnClickListener { dialogInterface, which ->
+                    when (which) {
+                        0 -> {
+                            viewModel.getEditAccount()?.value = when (mListType) {
+                                MainContainerFragment.SITE_ACCOUNT_PAGE -> mSiteList.get(position)
+                                MainContainerFragment.CREDIT_ACCOUNT_PAGE -> mCreditList.get(position)
+                                MainContainerFragment.NOTE_ACCOUNT_PAGE -> mNoteList.get(position)
+                                else -> null
+                            }
+                            onActionClickListener?.onEditClick()
+                        }
+                        1 -> {
+                            viewModel.getDeleteAccount()?.value = when (mListType) {
+                                MainContainerFragment.SITE_ACCOUNT_PAGE -> mSiteList.get(position)
+                                MainContainerFragment.CREDIT_ACCOUNT_PAGE -> mCreditList.get(position)
+                                MainContainerFragment.NOTE_ACCOUNT_PAGE -> mNoteList.get(position)
+                                else -> null
+                            }
+                            onActionClickListener?.onDeleteClick()
+                        }
+                        else -> return@OnClickListener
+                    }
+                }).create().show()
+        }
 
         @SuppressLint("SetTextI18n")
         override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
@@ -213,7 +263,7 @@ class MainContainerFragment : BaseFragment() {
                 else -> 0
             }
 
-        class ViewHolder : RecyclerView.ViewHolder {
+        internal inner class ViewHolder : RecyclerView.ViewHolder {
             lateinit var siteAccountBinding: ItemSiteAccountBinding
             lateinit var creditAccountBinding : ItemCreditAccountBinding
             lateinit var noteBinding : ItemNoteAccountBinding

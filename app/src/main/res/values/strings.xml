@@ -21,4 +21,16 @@
     <string name="note_description">Description</string>
     <string name="note_title">Title</string>
     <string name="empty_warning">Check that all fields are filled</string>
+    <string name="choose_action_title">Choose action</string>
+    <string name="logout_title">Logout</string>
+    <string name="exit_title">Exit</string>
+    <string name="enter_password_title">Enter the password for account: </string>
+    <string name="login_title">Login</string>
+    <string name="site_account_description">Description</string>
+
+    <string-array name="actions">
+        <item>Edit</item>
+        <item>Delete</item>
+    </string-array>
+
 </resources>

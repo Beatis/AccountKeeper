@@ -11,6 +11,16 @@
         <item name="colorControlNormal">@color/input_color</item>
     </style>
 
+    <style name="AppThemeWhite" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/real_white</item>
+        <item name="colorControlActivated">@color/real_white</item>
+        <item name="colorControlNormal">@color/real_white</item>
+    </style>
+
     <style name="TextNormalSize">
         <item name="android:layout_marginTop">@dimen/default_small_padding</item>
         <item name="android:layout_marginBottom">@dimen/default_small_padding</item>
@@ -35,8 +45,18 @@
         <item name="android:textColorHint">@android:color/white</item>
     </style>
 
+    <style name="AuthEditTextFieldsWhite">
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/real_white</item>
+        <item name="android:textColorHint">@color/real_white</item>
+    </style>
+
     <style name="TextInputLayoutAuthStyle">
         <item name="android:textColorHint">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="TextInputLayoutAuthStyleWhite">
+        <item name="android:textColorHint">@color/real_white</item>
     </style>
 
     <style name="SplashTime" parent="Theme.AppCompat.Light.NoActionBar">

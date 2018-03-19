@@ -13,7 +13,7 @@ interface NoteDao {
     fun getAll() : LiveData<List<Note>>
 
     @Query("SELECT * FROM note_table where id = :searchId")
-    fun getNoteById(searchId: Long): NoteDao
+    fun getNoteById(searchId: Long): Note
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(note: Note)

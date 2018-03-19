@@ -13,6 +13,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.kbeatis.acckeeper.BaseUtil.BaseFragment
 import com.example.kbeatis.acckeeper.Core.MainContainerFragment
+import com.example.kbeatis.acckeeper.Entity.CreditAccount
+import com.example.kbeatis.acckeeper.Entity.Note
+import com.example.kbeatis.acckeeper.Entity.SiteAccount
 import com.example.kbeatis.acckeeper.MainViewModel
 import com.example.kbeatis.acckeeper.R
 import com.example.kbeatis.acckeeper.databinding.FragmentCreateAccountBinding
@@ -34,10 +37,18 @@ class CreateAccountFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_create_account, container, false)
-        viewModel.getSelectedAccount()?.observe(this, Observer {
-            checkSelectedPage(it)
-        })
-//        checkSelectedPage(viewModel.getSelectedAccount()?.value)
+
+        if (viewModel.getEditAccount()?.value != null) {
+            when (viewModel.getEditAccount()?.value) {
+                is SiteAccount -> replaceTransaction(CreateSiteAccountFragment())
+                is CreditAccount -> replaceTransaction(CreateCreditAccountFragment())
+                is Note -> replaceTransaction(CreateNoteFragment())
+            }
+        } else {
+            viewModel.getSelectedAccount()?.observe(this, Observer {
+                checkSelectedPage(it)
+            })
+        }
         return mBinding.root
     }
 

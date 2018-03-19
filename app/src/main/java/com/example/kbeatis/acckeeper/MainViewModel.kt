@@ -21,6 +21,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private var livedataCreditAccount: LiveData<List<CreditAccount>>? = null
     private var livedataNote: LiveData<List<Note>>? = null
 
+    private var livedataEditAccount: MutableLiveData<Any>? = null
+    private var livedataDeleteAccount: MutableLiveData<Any>? = null
+
     fun getSelectedAccount() : MutableLiveData<Int>? {
         if(selectedAccount == null) {
             selectedAccount = MutableLiveData<Int>()
@@ -28,6 +31,27 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
         return selectedAccount
     }
+
+    fun getEditAccount() : MutableLiveData<Any>? = when (livedataEditAccount) {
+        null -> {
+            livedataEditAccount = MutableLiveData()
+            livedataEditAccount
+        }
+        else -> livedataEditAccount
+    }
+
+    fun resetEditAccount() {
+        livedataEditAccount = null
+    }
+
+    fun getDeleteAccount() : MutableLiveData<Any>? = when (livedataDeleteAccount) {
+        null -> {
+            livedataDeleteAccount = MutableLiveData()
+            livedataDeleteAccount
+        }
+        else -> livedataDeleteAccount
+    }
+
 
     fun getSites() : LiveData<List<SiteAccount>>? =  when (livedataSiteAccount) {
         null -> {
@@ -82,4 +106,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getDatabase() : AccKeeperDataBase? = mDatabase
+
+    fun wipeAllData() {
+        mDatabase?.siteAccountDao()?.deleteAll()
+        mDatabase?.creditAccountDao()?.deleteAll()
+        mDatabase?.noteDao()?.deleteAll()
+        mDatabase?.userDao()?.deleteAll()
+    }
 }

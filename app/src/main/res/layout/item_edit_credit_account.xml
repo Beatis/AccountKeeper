@@ -20,11 +20,12 @@
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_credit_name"
                     style="@style/TextInputLayoutAuthStyle"
+                    android:hint="@string/credit_account_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:hint="@string/credit_account_name"
+
                         style="@style/AuthEditTextFields"
                         android:id="@+id/credit_account_name"
                         android:layout_width="match_parent"
@@ -35,11 +36,12 @@
                     android:id="@+id/input_credit_number"
                     android:layout_below="@id/input_credit_name"
                     style="@style/TextInputLayoutAuthStyle"
+                    android:hint="@string/credit_account_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:hint="@string/credit_account_number"
+
                         android:ems="18"
                         android:inputType="number"
                         style="@style/AuthEditTextFields"
@@ -59,12 +61,13 @@
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/input_credit_month"
                         style="@style/TextInputLayoutAuthStyle"
+                        android:hint="@string/credit_account_month"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:hint="@string/credit_account_month"
+
                             style="@style/AuthEditTextFields"
                             android:ems="2"
                             android:inputType="number"
@@ -77,12 +80,13 @@
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/input_credit_year"
                         style="@style/TextInputLayoutAuthStyle"
+                        android:hint="@string/credit_account_year"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:hint="@string/credit_account_year"
+
                             style="@style/AuthEditTextFields"
                             android:ems="2"
                             android:inputType="number"
@@ -100,11 +104,12 @@
                     android:id="@+id/input_credit_cww"
                     android:layout_below="@id/expire_date_linear"
                     style="@style/TextInputLayoutAuthStyle"
+                    android:hint="@string/credit_account_cww"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:hint="@string/credit_account_cww"
+
                         style="@style/AuthEditTextFields"
                         android:ems="3"
                         android:inputType="number"

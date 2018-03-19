@@ -16,26 +16,25 @@ import com.example.kbeatis.acckeeper.Entity.User
 class IntroActivity : BaseActivity() {
 
     private lateinit var mDataBase: AccKeeperDataBase
-    private lateinit var viewModel: IntroActivityViewModel
+    private lateinit var viewModel: IntroViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*TODO проверить зарегистрирован ли уже аккаунт
-        если да, то кидать на главный экран
-        если нет, то кидать на экран с регистрацией
-         */
-
-        viewModel = ViewModelProviders.of(this).get(IntroActivityViewModel::class.java)
-        viewModel.getUsers()?.observe(this, Observer<List<User>> {
-            if (it != null) {
-                if (!it.isEmpty()) {
-                    startActivity(Intent(this, MainActivity::class.java))
-                } else {
+        viewModel = ViewModelProviders.of(this).get(IntroViewModel::class.java)
+        val userList = viewModel.getUsers()
+        if (userList != null) {
+            if (!userList.isEmpty()) {
+                val currentUser = userList.get(0)
+                if (!currentUser.isAuthorized) {
                     startActivity(Intent(this, AuthActivity::class.java))
+                } else {
+                    startActivity(Intent(this, MainActivity::class.java))
                 }
-                finish()
+            } else {
+                startActivity(Intent(this, AuthActivity::class.java))
             }
-        })
+            finish()
+        }
 //        Single.fromCallable {
 //                val dataBase = AccKeeperDataBase.getInstance(this)
 //                val userDao = dataBase?.userDao()

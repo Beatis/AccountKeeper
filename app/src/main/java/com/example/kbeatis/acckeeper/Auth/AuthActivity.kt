@@ -20,8 +20,14 @@ import com.example.kbeatis.acckeeper.inTransactionSupport
  * Created by kbeatis on 10.03.18.
  */
 class AuthActivity : BaseActivity(), AuthFragment.OnCreateAccountClickListener {
-    override fun onCreateAccountClick(user: User) {
-        AccKeeperDataBase.getInstance(applicationContext)?.userDao()?.insert(user)
+
+    override fun onLoginAccountClick() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
+
+    override fun onCreateAccountClick() {
+
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
