@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <RelativeLayout
         style="@style/BackgroundStyle"
         android:layout_width="match_parent"
@@ -11,37 +12,38 @@
             style="@style/CardViewStyle">
 
             <RelativeLayout
-                android:padding="@dimen/default_normal_padding"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_normal_padding">
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_credit_name"
                     style="@style/TextInputLayoutAuthStyle"
-                    android:hint="@string/site_account_name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/site_account_name">
 
                     <EditText
 
-                        style="@style/AuthEditTextFields"
                         android:id="@+id/site_account_name"
+                        style="@style/AuthEditTextFields"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
                 </android.support.design.widget.TextInputLayout>
+
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_credit_number"
-                    android:layout_below="@id/input_credit_name"
                     style="@style/TextInputLayoutAuthStyle"
-                    android:hint="@string/site_account_login"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/input_credit_name"
+                    android:hint="@string/site_account_login">
 
                     <EditText
 
-                        style="@style/AuthEditTextFields"
                         android:id="@+id/site_account_login"
+                        style="@style/AuthEditTextFields"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -49,16 +51,16 @@
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_credit_month"
-                    android:layout_below="@id/input_credit_number"
                     style="@style/TextInputLayoutAuthStyle"
-                    android:hint="@string/site_account_password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/input_credit_number"
+                    android:hint="@string/site_account_password">
 
                     <EditText
 
-                        style="@style/AuthEditTextFields"
                         android:id="@+id/site_account_password"
+                        style="@style/AuthEditTextFields"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -66,16 +68,16 @@
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_credit_year"
-                    android:layout_below="@id/input_credit_month"
                     style="@style/TextInputLayoutAuthStyle"
-                    android:hint="@string/site_account_description"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/input_credit_month"
+                    android:hint="@string/site_account_description">
 
                     <EditText
 
-                        style="@style/AuthEditTextFields"
                         android:id="@+id/site_account_description"
+                        style="@style/AuthEditTextFields"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -86,7 +88,8 @@
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             style="@style/FABStyle"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            android:src="@drawable/ic_done" />
     </RelativeLayout>
 </layout>

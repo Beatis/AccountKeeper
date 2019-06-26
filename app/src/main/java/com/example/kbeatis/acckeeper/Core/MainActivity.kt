@@ -24,7 +24,7 @@ import com.example.kbeatis.acckeeper.databinding.ActivityMainBinding
 import com.example.kbeatis.acckeeper.inTransactionSupport
 
 class MainActivity : BaseActivity(), MainContainerFragment.OnFabClickListener,
-        MainContainerFragment.OnActionClickListener{
+    MainContainerFragment.OnActionClickListener {
 
     override fun onEditClick() {
         replaceWithAddBackstackTransaction(CreateAccountFragment())
@@ -33,11 +33,11 @@ class MainActivity : BaseActivity(), MainContainerFragment.OnFabClickListener,
     override fun onDeleteClick() {
         when (viewModel.getDeleteAccount()?.value) {
             is SiteAccount -> viewModel.getDatabase()?.siteAccountDao()
-                    ?.delete(viewModel.getDeleteAccount()?.value as SiteAccount)
+                ?.delete(viewModel.getDeleteAccount()?.value as SiteAccount)
             is CreditAccount -> viewModel.getDatabase()?.creditAccountDao()
-                    ?.delete(viewModel.getDeleteAccount()?.value as CreditAccount)
+                ?.delete(viewModel.getDeleteAccount()?.value as CreditAccount)
             is Note -> viewModel.getDatabase()?.noteDao()
-                    ?.delete(viewModel.getDeleteAccount()?.value as Note)
+                ?.delete(viewModel.getDeleteAccount()?.value as Note)
         }
     }
 
@@ -64,8 +64,8 @@ class MainActivity : BaseActivity(), MainContainerFragment.OnFabClickListener,
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
         R.id.logout -> {
             val userList = viewModel.getDatabase()?.userDao()?.getAll()
-            if(userList != null) {
-                val currentUser = userList.get(0)
+            if (userList != null) {
+                val currentUser = userList.first()
                 currentUser.isAuthorized = false
                 viewModel.getDatabase()?.userDao()?.update(currentUser)
                 startActivity(Intent(this, IntroActivity::class.java))
@@ -82,13 +82,13 @@ class MainActivity : BaseActivity(), MainContainerFragment.OnFabClickListener,
         else -> super.onOptionsItemSelected(item)
     }
 
-    fun replaceTransaction (fragment: BaseFragment) {
+    private fun replaceTransaction(fragment: BaseFragment) {
         supportFragmentManager.inTransactionSupport {
             replace(mBinding.mainContainer.id, fragment)
         }
     }
 
-    fun replaceWithAddBackstackTransaction (fragment: BaseFragment) {
+    private fun replaceWithAddBackstackTransaction(fragment: BaseFragment) {
         supportFragmentManager.inTransactionSupport {
             addToBackStack("OnCreateAccountFragment")
             replace(mBinding.mainContainer.id, fragment)

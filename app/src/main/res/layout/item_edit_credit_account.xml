@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <RelativeLayout
         style="@style/BackgroundStyle"
         android:layout_width="match_parent"
@@ -13,109 +14,109 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:padding="@dimen/default_normal_padding"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_normal_padding">
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_credit_name"
                     style="@style/TextInputLayoutAuthStyle"
-                    android:hint="@string/credit_account_name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/credit_account_name">
 
                     <EditText
 
-                        style="@style/AuthEditTextFields"
                         android:id="@+id/credit_account_name"
+                        style="@style/AuthEditTextFields"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
                 </android.support.design.widget.TextInputLayout>
+
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_credit_number"
-                    android:layout_below="@id/input_credit_name"
                     style="@style/TextInputLayoutAuthStyle"
-                    android:hint="@string/credit_account_number"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/input_credit_name"
+                    android:hint="@string/credit_account_number">
 
                     <EditText
 
-                        android:ems="18"
-                        android:inputType="number"
-                        style="@style/AuthEditTextFields"
                         android:id="@+id/credit_account_number"
+                        style="@style/AuthEditTextFields"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:ems="18"
+                        android:inputType="number" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
-                    android:layout_below="@+id/input_credit_number"
                     android:id="@+id/expire_date_linear"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/input_credit_number"
+                    android:orientation="horizontal">
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/input_credit_month"
                         style="@style/TextInputLayoutAuthStyle"
-                        android:hint="@string/credit_account_month"
-                        android:layout_weight="1"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/credit_account_month">
 
                         <EditText
 
-                            style="@style/AuthEditTextFields"
-                            android:ems="2"
-                            android:inputType="number"
                             android:id="@+id/credit_account_month"
+                            style="@style/AuthEditTextFields"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:ems="2"
+                            android:inputType="number" />
 
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/input_credit_year"
                         style="@style/TextInputLayoutAuthStyle"
-                        android:hint="@string/credit_account_year"
-                        android:layout_weight="1"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/credit_account_year">
 
                         <EditText
 
-                            style="@style/AuthEditTextFields"
-                            android:ems="2"
-                            android:inputType="number"
                             android:id="@+id/credit_account_year"
+                            style="@style/AuthEditTextFields"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:ems="2"
+                            android:inputType="number" />
 
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
 
 
-
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_credit_cww"
-                    android:layout_below="@id/expire_date_linear"
                     style="@style/TextInputLayoutAuthStyle"
-                    android:hint="@string/credit_account_cww"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/expire_date_linear"
+                    android:hint="@string/credit_account_cww">
 
                     <EditText
 
-                        style="@style/AuthEditTextFields"
-                        android:ems="3"
-                        android:inputType="number"
                         android:id="@+id/credit_account_cww"
+                        style="@style/AuthEditTextFields"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:ems="3"
+                        android:inputType="number" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -125,8 +126,9 @@
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             style="@style/FABStyle"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            android:src="@drawable/ic_done" />
 
     </RelativeLayout>
 </layout>
